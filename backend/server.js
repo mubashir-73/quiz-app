@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const pageroutes = require("./routes/pages");
 
+app.use(express.static("../fronted/"));
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();

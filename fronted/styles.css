@@ -1,0 +1,21 @@
+body {
+  background-color: #8c52ff;
+  margin: 0;
+  padding: 0;
+}
+
+.topband {
+  display: flex;
+  background-color: #000092;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+li {
+  display: inline;
+  background-color: #000092;
+  color: white;
+  font-size: 33px;
+  font-family: "Archivo Black", sans-serif;
+}
