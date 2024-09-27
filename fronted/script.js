@@ -117,3 +117,6 @@ btn.addEventListener("click", () => {
     quest.innerHTML = "<h1>Quiz Completed!</h1>";
   }
 });
+
+//BUG: qnode is shown as null causing issues with assigning attributes to it have to check that out....
+//TODO: send data from form to submit_form file and from there to mongodb(considering atlas)...
