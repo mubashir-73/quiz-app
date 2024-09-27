@@ -19,3 +19,10 @@ li {
   font-size: 33px;
   font-family: "Archivo Black", sans-serif;
 }
+
+#qnode {
+  padding-left: 40px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: white;
+}
