@@ -26,3 +26,42 @@ li {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: white;
 }
+
+#submit {
+  position: relative;
+  transition: transform 0.5s ease;
+  top: 5px;
+  left: 5px;
+  background-color: white;
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+  border-style: none;
+  z-index: 1;
+  color: black;
+  width: 120px;
+  margin-left: 40px;
+  border-radius: 20px;
+}
+
+#botsubmit {
+  position: absolute;
+  z-index: 0;
+  background-color: #000092;
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+  border-style: none;
+  color: white;
+  width: 120px;
+  margin-left: 40px;
+  border-radius: 20px;
+}
+
+.move-left {
+  transform: translateX(-5px);
+}
+
+.move-bottom {
+  transform: translateY(-5px);
+}

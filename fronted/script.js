@@ -2,9 +2,10 @@ const quest = document.querySelector("#qnode");
 const btn = document.querySelector("#submit");
 const oldquest = document.querySelector("#qu");
 let index = 0;
-const h1 = document.createElement("h1");
-h1.textContent = "Question appear here:";
-quest.appendChild(h1);
+const bottom = document.querySelector("#base");
+const heading = document.createElement("h1");
+heading.textContent = "Question appear here:";
+quest.appendChild(heading);
 const arr = [
   {
     question: "What did the Russo-Japanese War signify?",
@@ -14,11 +15,11 @@ const arr = [
     option4: "The power of Dr. Russo",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "Easiest way to separate pasta and water?",
+    option1: "Pour it through a strainer",
+    option2: "Use a fork (or something like that)",
+    option3: "Drink Water",
+    option4: "ThunderLion",
   },
   {
     question: "What did the Russo-Japanese War signify?",
@@ -78,7 +79,7 @@ const arr = [
   },
 ];
 function displayQuestion(index) {
-  quest.innerHTML = "clear";
+  quest.innerHTML = "";
   const h1 = document.createElement("h1");
   h1.textContent = `Question #${index + 1}`;
 
@@ -110,13 +111,17 @@ function displayQuestion(index) {
 displayQuestion(index);
 
 btn.addEventListener("click", () => {
-  currentIndex++;
-  if (currentIndex < arr.length) {
-    displayQuestion(currentIndex);
+  index++;
+  bottom.classList.toggle("move-left");
+  bottom.classList.toggle("move-bottom");
+  if (index < arr.length) {
+    displayQuestion(index);
   } else {
     quest.innerHTML = "<h1>Quiz Completed!</h1>";
   }
+  bottom.classList.toggle("move-left");
+  bottom.classList.toggle("move-bottom");
 });
 
-//BUG: qnode is shown as null causing issues with assigning attributes to it have to check that out....
-//TODO: send data from form to submit_form file and from there to mongodb(considering atlas)...
+//BUG: some issue with bottom gotta check it out...
+////TODO: send data from form to submit_form file and from there to mongodb(considering atlas)...
