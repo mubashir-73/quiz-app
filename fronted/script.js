@@ -1,5 +1,7 @@
+var time;
 const quest = document.querySelector("#qnode");
 const btn = document.querySelector("#submit");
+var timer = document.querySelector("#timer");
 const oldquest = document.querySelector("#qu");
 let index = 0;
 const bottom = document.querySelector(".base");
@@ -78,6 +80,25 @@ const arr = [
     option4: "The power of Dr. Russo",
   },
 ];
+
+(function time() {
+  var sec = 0;
+  var sec1 = 0;
+  var min1 = 0;
+  time = setInterval(() => {
+    timer.innerHTML = `${min1}:${sec1}${sec}`;
+    sec++;
+    if (sec === 10) {
+      sec1++;
+      sec = 0;
+    }
+    if (sec1 === 6) {
+      min1++;
+      sec = 0;
+      sec1 = 0;
+    }
+  }, 1000);
+})();
 function displayQuestion(index) {
   quest.innerHTML = "";
   const h1 = document.createElement("h1");
@@ -89,9 +110,9 @@ function displayQuestion(index) {
 
   for (let i = 1; i <= 4; i++) {
     const option = document.createElement("input");
-    option.type = "checkbox";
+    option.type = "radio";
     option.id = `option${i}`;
-    option.name = `option${i}`;
+    option.name = "option";
     option.value = `option${i}`;
 
     const label = document.createElement("label");
