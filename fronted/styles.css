@@ -21,6 +21,7 @@ li {
 }
 
 #qnode {
+  font-weight: 800;
   padding-left: 40px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -29,7 +30,7 @@ li {
 
 #submit {
   position: relative;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
   top: 5px;
   left: 5px;
   background-color: white;
@@ -45,7 +46,7 @@ li {
 }
 
 #botsubmit {
-  position: absolute;
+  position: fixed;
   z-index: 0;
   background-color: #000092;
   font-size: 20px;
@@ -58,10 +59,7 @@ li {
   border-radius: 20px;
 }
 
-.move-left {
-  transform: translateX(-5px);
-}
-
-.move-bottom {
-  transform: translateY(-5px);
+#submit.active {
+  position: relative;
+  transform: translate(-5px, -5px);
 }

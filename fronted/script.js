@@ -2,7 +2,7 @@ const quest = document.querySelector("#qnode");
 const btn = document.querySelector("#submit");
 const oldquest = document.querySelector("#qu");
 let index = 0;
-const bottom = document.querySelector("#base");
+const bottom = document.querySelector(".base");
 const heading = document.createElement("h1");
 heading.textContent = "Question appear here:";
 quest.appendChild(heading);
@@ -112,15 +112,15 @@ displayQuestion(index);
 
 btn.addEventListener("click", () => {
   index++;
-  bottom.classList.toggle("move-left");
-  bottom.classList.toggle("move-bottom");
   if (index < arr.length) {
     displayQuestion(index);
   } else {
     quest.innerHTML = "<h1>Quiz Completed!</h1>";
   }
-  bottom.classList.toggle("move-left");
-  bottom.classList.toggle("move-bottom");
+  btn.classList.add("active");
+  setTimeout(() => {
+    btn.classList.remove("active");
+  }, 150);
 });
 
 //BUG: some issue with bottom gotta check it out...
