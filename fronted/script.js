@@ -97,8 +97,16 @@ const arr = [
       sec = 0;
       sec1 = 0;
     }
+    if (min1 === 10 && sec === 2) {
+      completed();
+      timer.innerHTML = "";
+      timer.remove();
+      btn.remove();
+      bottom.remove();
+    }
   }, 1000);
 })();
+
 function displayQuestion(index) {
   quest.innerHTML = "";
   const h1 = document.createElement("h1");
@@ -129,6 +137,10 @@ function displayQuestion(index) {
   quest.appendChild(form);
 }
 
+function completed() {
+  quest.innerHTML = "<h1>Quiz Completed!</h1>";
+}
+
 displayQuestion(index);
 
 btn.addEventListener("click", () => {
@@ -136,7 +148,7 @@ btn.addEventListener("click", () => {
   if (index < arr.length) {
     displayQuestion(index);
   } else {
-    quest.innerHTML = "<h1>Quiz Completed!</h1>";
+    completed();
   }
   btn.classList.add("active");
   setTimeout(() => {
@@ -144,5 +156,4 @@ btn.addEventListener("click", () => {
   }, 150);
 });
 
-//BUG: some issue with bottom gotta check it out...
-////TODO: send data from form to submit_form file and from there to mongodb(considering atlas)...
+//TODO: send data from form to submit_form file and from there to mongodb(considering atlas)...
