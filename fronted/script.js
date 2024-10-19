@@ -139,6 +139,7 @@ function displayQuestion(index) {
 
 function completed() {
   quest.innerHTML = "<h1>Quiz Completed!</h1>";
+  btn.innerHTML = "Submit";
 }
 
 displayQuestion(index);
