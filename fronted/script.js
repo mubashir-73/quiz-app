@@ -138,7 +138,7 @@ function displayQuestion(index) {
 }
 
 function completed() {
-  quest.innerHTML = "<h1>Quiz Completed!</h1>";
+  quest.innerHTML = "<img src="../apple.jpeg"><br><br><h1>Quiz Completed!</h1>";
   btn.innerHTML = "Submit";
 }
 
