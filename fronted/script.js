@@ -4,80 +4,95 @@ const btn = document.querySelector("#submit");
 var timer = document.querySelector("#timer");
 const oldquest = document.querySelector("#qu");
 let index = 0;
+let correctAnswers = 0;
 const bottom = document.querySelector(".base");
 const heading = document.createElement("h1");
-heading.textContent = "Question appear here:";
+heading.textContent = "Question appears here:";
 quest.appendChild(heading);
+
 const arr = [
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "What is DeepSeek known for?",
+    option1: "A new AI chatbot",
+    option2: "A programming language",
+    option3: "A database system",
+    option4: "An encryption protocol",
+    answer: "option1",
   },
   {
-    question: "Easiest way to separate pasta and water?",
-    option1: "Pour it through a strainer",
-    option2: "Use a fork (or something like that)",
-    option3: "Drink Water",
-    option4: "ThunderLion",
+    question:
+      "Which runtime environment is designed to run JavaScript outside the browser and is built on Rust?",
+    option1: "Node.js",
+    option2: "Deno",
+    option3: "Bun",
+    option4: "Go",
+    answer: "option2",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "Which company developed the ChatGPT model?",
+    option1: "Google",
+    option2: "Meta",
+    option3: "OpenAI",
+    option4: "Microsoft",
+    answer: "option3",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "Which AI model is optimized for long-context understanding?",
+    option1: "GPT-3",
+    option2: "LLaMA 2",
+    option3: "Claude 2",
+    option4: "GPT-4 Turbo",
+    answer: "option4",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question:
+      "Which technology is used for decentralized applications (dApps)?",
+    option1: "Blockchain",
+    option2: "GraphQL",
+    option3: "REST API",
+    option4: "Kafka",
+    answer: "option1",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "What is the main advantage of Rust over C++?",
+    option1: "Garbage collection",
+    option2: "Memory safety without garbage collection",
+    option3: "Interpreted execution",
+    option4: "Slower compilation",
+    answer: "option2",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "Which company developed the Tensor Processing Unit (TPU)?",
+    option1: "NVIDIA",
+    option2: "AMD",
+    option3: "Google",
+    option4: "Intel",
+    answer: "option3",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "What is the purpose of WebAssembly (WASM)?",
+    option1: "To replace JavaScript",
+    option2: "To run high-performance code in browsers",
+    option3: "To create AI models",
+    option4: "To improve network security",
+    answer: "option2",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question:
+      "Which cloud provider developed the Firecracker microVM technology?",
+    option1: "Google Cloud",
+    option2: "Microsoft Azure",
+    option3: "AWS",
+    option4: "IBM Cloud",
+    answer: "option3",
   },
   {
-    question: "What did the Russo-Japanese War signify?",
-    option1: " The rise of Japan as a global power",
-    option2: "The obsolescence of naval battles",
-    option3: "The rise of Russia as a global power",
-    option4: "The power of Dr. Russo",
+    question: "What does the term 'edge computing' refer to?",
+    option1: "Processing data closer to the source",
+    option2: "Using quantum computers",
+    option3: "Enhancing database transactions",
+    option4: "A method of securing APIs",
+    answer: "option1",
   },
 ];
 
@@ -98,7 +113,7 @@ const arr = [
       sec1 = 0;
     }
     if (min1 === 10 && sec === 2) {
-      completed();
+      evaluateQuiz();
       timer.innerHTML = "";
       timer.remove();
       btn.remove();
@@ -137,24 +152,34 @@ function displayQuestion(index) {
   quest.appendChild(form);
 }
 
-function completed() {
-  quest.innerHTML = "<img src="../apple.jpeg"><br><br><h1>Quiz Completed!</h1>";
-  btn.innerHTML = "Submit";
-}
-
 displayQuestion(index);
 
 btn.addEventListener("click", () => {
+  const selectedOption = document.querySelector('input[name="option"]:checked');
+  if (selectedOption && selectedOption.value === arr[index].answer) {
+    correctAnswers++;
+  }
   index++;
   if (index < arr.length) {
     displayQuestion(index);
   } else {
-    completed();
+    evaluateQuiz();
   }
-  btn.classList.add("active");
-  setTimeout(() => {
-    btn.classList.remove("active");
-  }, 150);
 });
 
-//TODO: send data from form to submit_form file and from there to mongodb(considering atlas)...
+function evaluateQuiz() {
+  quest.innerHTML = "";
+  if (correctAnswers === arr.length) {
+    quest.innerHTML =
+      '<img src="./img/apple.png" width="500px" height="500px"/><br><br><h1>Congratulations! You passed! your answer lies in this apple!</h1>';
+  } else {
+    quest.innerHTML =
+      '<img src="./img/failed.jpeg" width="500px" height="500px"/><br><br><h1>Failed! Please try again.</h1>';
+    correctAnswers = 0;
+    index = 0;
+    btn.innerHTML = "Retry";
+    btn.addEventListener("click", () => {
+      displayQuestion(index);
+    });
+  }
+}
